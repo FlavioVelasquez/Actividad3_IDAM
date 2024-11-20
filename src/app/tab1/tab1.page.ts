@@ -6,7 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  monedaQ: number | null = null; 
+  monedaUSD: number | null = null; 
+
+  readonly tasaCambio: number = 8;
 
   constructor() {}
+
+  convertirDivisa() {
+    if (this.monedaQ !== null && this.monedaQ > 0) {
+      this.monedaUSD = this.monedaQ / this.tasaCambio;
+    } else {
+      this.monedaUSD = null;
+      alert('Por favor, ingresar una cantidad válida en quetzales.');
+    }
+  }
 
 }

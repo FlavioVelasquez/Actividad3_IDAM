@@ -1,17 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>DivisApp - 22000390</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>DivisApp</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Quetzales (Q)</ion-label>
+        <ion-input 
+          type="number" 
+          [(ngModel)]="monedaQ" 
+          placeholder="Ingresar la cantidad"
+        ></ion-input>
+      </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <div class="custom-container">
+        <ion-button 
+          expand="block" 
+          fill="outline" 
+          color="tertiary"
+          shape="round" 
+          size="large" 
+          (click)="convertirDivisa()"
+        >
+          <ion-icon slot="start" name="cash-outline"></ion-icon>
+          Convertir a dolares
+        </ion-button>
+      </div>
+
+      <div *ngIf="monedaUSD !== null" class="ion-margin-top">
+        <ion-label>
+          <strong>Resultado:</strong> {{ monedaUSD | number: '1.2-2' }} USD
+        </ion-label>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
